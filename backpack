@@ -1,5 +1,5 @@
 #!/bin/sh
-if [ ! -t 1 -o ! $# -eq 1 -o ! -f ~/.backpack -a -z "$BACKPACK" ]; then
+if [ ! -t 1 -o ! -f ~/.backpack -a -z "$BACKPACK" ]; then
 	exec ssh "$@"
 fi
 if [ -z "$BACKPACK" ]; then
@@ -43,4 +43,4 @@ cat <<EOF
 exec /bin/sh -i
 EOF
 )"
-exec ssh -t "$1" "$INIT"
+exec ssh -t "$@" "$INIT"
