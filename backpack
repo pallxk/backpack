@@ -6,7 +6,7 @@ if [ -z "$BACKPACK" ]; then
 	encode() {
 		base64 | tr -d "\n"
 	}
-	RC="$(encode < ~/.backpack)"
+	RC="$(cat ~/.backpack ~/.backpack.d/*.backpack 2> /dev/null | encode)"
 	FUNCTION="$(encode <<EOF
 backpack() (
 	$(cat "$(realpath "$0")")
