@@ -16,7 +16,7 @@ EOF
 	BACKPACK="$(encode <<EOF
 extract_backpack() {
 	exec "\$BASH" --rcfile <(
-		cat <<'EOF_2'
+		[ -z "$BACKPACK_NOPROFILE" ] && cat <<'EOF_2'
 [ -f /etc/profile ] && . /etc/profile
 for f in ~/.bash_profile ~/.bash_login ~/.profile; do
 	if [ -f "\$f" ]; then
